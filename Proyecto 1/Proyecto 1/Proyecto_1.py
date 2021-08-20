@@ -1,11 +1,14 @@
+import numpy as np
 
 from tkinter import filedialog, Tk
 from Parser import Parser
 from Terreno import Terreno
 
-terreno = Terreno()
+
 p = Parser()
 data = ''
+terrenos =[]
+
 def abrir():
     print("En el metodo abrir")
     Tk().withdraw()
@@ -35,7 +38,54 @@ def prueba ():
         print("Error lectura")
 
 
+def llenarTerrenos(lista):
+        terreno = ''
+        i = 0
+        end = len(lista)
+        while i< end:
+            x=lista[i];
+            if(x=='terreno'):
+                if(terreno==''):
+                    terreno = Terreno()
+                else:
+                    terrenos.append(terreno)
+                    terreno=''
 
+            elif(x=='nombre'):
+                i+=1
+                terreno.nombre = lista[i]
+            elif(x=='posicioninicio'):
+                if(terreno.inicio_x==0):
+                    i+=2
+                    terreno.inicio_x = lista[i]
+                    i+=3
+                    terreno.inicio_y = lista[i]
+            elif(x=='posicionfin'):
+                if(terreno.final_x==0):
+                    i+=2
+                    terreno.final_x = lista[i]
+                    num_rows = abs(int(terreno.inicio_x)-int(terreno.final_x))+1
+                    i+=3
+                    terreno.final_y = lista[i]
+                    num_cols = abs(int(terreno.inicio_y)-int(terreno.final_y))+1
+                    
+                    #lo bueno aqui es que en vez del 0 podes meter una clase y te mete una matrix de objetos
+                    terreno.lista_posiciones = np.full((num_rows, num_cols), 0) 
+
+            elif(x=='posicion'):
+                i+=2
+                x = int(lista[i])-1
+
+                i+=2
+                y = int(lista[i])-1
+                i +=1
+
+                terreno.lista_posiciones[x,y]= int(lista[i])
+                i+=1
+
+            else:
+                pass
+            i+=1
 
 if __name__ == "__main__":
   
@@ -49,10 +99,8 @@ if __name__ == "__main__":
         if opcion == 1:
             print("Opcion 1")
             prueba()
-            
-            print(p.tokens)
-            terreno.llenarTerrenos(p.tokens)
-            print(terreno.lista_posiciones)
+            llenarTerrenos(p.tokens)
+            print(terrenos[0].lista_posiciones)
 
             
         else:
