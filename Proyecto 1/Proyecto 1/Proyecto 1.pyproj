@@ -21,6 +21,12 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ListaDoble.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Nodo.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Parser.py" />
     <Compile Include="Proyecto_1.py" />
     <Compile Include="Reporte.py" />

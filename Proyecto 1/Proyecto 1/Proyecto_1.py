@@ -3,7 +3,7 @@ import numpy as np
 from tkinter import filedialog, Tk
 from Parser import Parser
 from Terreno import Terreno
-
+from ListaDoble import ListaDoble
 
 p = Parser()
 data = ''
@@ -101,7 +101,16 @@ if __name__ == "__main__":
             prueba()
             llenarTerrenos(p.tokens)
             print(terrenos[0].lista_posiciones)
+        if opcion == 2:
+            l = ListaDoble()
+            l.insertar("1")
+            l.insertar("2")
+            l.insertar("3")
+            l.insertar("4")
+            l.insertar("5")
+            l.insertar("6")
 
+            l.recorrer();
             
         else:
             print("Ingrese una opcion valida")
