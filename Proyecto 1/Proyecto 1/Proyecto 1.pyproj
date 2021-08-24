@@ -21,6 +21,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Dijkstra.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ListaDoble.py">
       <SubType>Code</SubType>
     </Compile>
