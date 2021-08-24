@@ -4,7 +4,7 @@ from tkinter import filedialog, Tk
 from Parser import Parser
 from Terreno import Terreno
 from ListaDoble import ListaDoble
-
+from Nodo import Nodo
 p = Parser()
 data = ''
 terrenos =[]
@@ -101,16 +101,13 @@ if __name__ == "__main__":
             prueba()
             llenarTerrenos(p.tokens)
             print(terrenos[0].lista_posiciones)
-        if opcion == 2:
-            l = ListaDoble()
-            l.insertar("1")
-            l.insertar("2")
-            l.insertar("3")
-            l.insertar("4")
-            l.insertar("5")
-            l.insertar("6")
 
-            l.recorrer();
+            l = ListaDoble()
+            node = Nodo(x=1,y=1,distanciatotal=0)
+            l.sucesores(terrenos[0].lista_posiciones,node)
+
+        #if opcion == 2:
+            
             
         else:
             print("Ingrese una opcion valida")
