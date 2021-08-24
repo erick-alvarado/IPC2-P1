@@ -11,7 +11,6 @@ class ListaDoble:
         x = nodo.x
         y = nodo.y
         if  x+1<matriz[0].size:
-           #Ya quedo
            costo_derecha = matriz[y,x+1]
            lista_sucesores.append(Nodo(x+1,y,distanciatotal=costototal+costo_derecha));
 
@@ -20,7 +19,6 @@ class ListaDoble:
            lista_sucesores.append(Nodo(x-1,y,distanciatotal=costototal+costo_izquierda));
         
         if y+1<matriz.size:
-            #Ya quedo
             costo_abajo = matriz[y+1,x]
             lista_sucesores.append(Nodo(x,y+1,distanciatotal=costototal+costo_abajo));
 
@@ -28,7 +26,7 @@ class ListaDoble:
            costo_arriba = matriz[y-1,x] 
            lista_sucesores.append(Nodo(x,y-1,distanciatotal=costototal+costo_arriba));
 
-           
+        
 
         for i in range(len(lista_sucesores)):
            nodo = lista_sucesores[i]
@@ -36,7 +34,9 @@ class ListaDoble:
                nodoSig = lista_sucesores[i+1]
                nodo.siguiente= nodoSig
                nodoSig.anterior= nodo
-        
+
+        # burbuja a lista_sucesores y retorna el nodo inicial para meterlo en la general
+
         return lista_sucesores[0]
 
     def insertar(self,data):
