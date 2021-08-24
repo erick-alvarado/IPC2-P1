@@ -27,7 +27,13 @@
     <Compile Include="ListaDoble.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ListaSimple.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Nodo.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NodoSimple.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Parser.py" />

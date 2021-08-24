@@ -3,11 +3,15 @@ import numpy as np
 from tkinter import filedialog, Tk
 from Parser import Parser
 from Terreno import Terreno
+from ListaSimple import ListaSimple
+from Dijkstra import Dijkstra
 from ListaDoble import ListaDoble
 from Nodo import Nodo
+
 p = Parser()
 data = ''
-terrenos =[]
+terrenos =ListaSimple()
+dk = Dijkstra()
 
 def abrir():
     print("En el metodo abrir")
@@ -48,7 +52,7 @@ def llenarTerrenos(lista):
                 if(terreno==''):
                     terreno = Terreno()
                 else:
-                    terrenos.append(terreno)
+                    terrenos.insertar(terreno)
                     terreno=''
 
             elif(x=='nombre'):
@@ -100,6 +104,15 @@ if __name__ == "__main__":
             print("Opcion 1")
             prueba()
             llenarTerrenos(p.tokens)
+
+            #Jala terreno aca hay que pedirle al usuario al terreno
+            k  = terrenos.buscar("terreno1")
+
+            #Setea matriz            
+            dk.matriz= k.lista_posiciones
+            print(dk.matriz)
+            dk.obtenerRuta(4,4)
+
             print(terrenos[0].lista_posiciones)
 
             l = ListaDoble()
