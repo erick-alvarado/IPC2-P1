@@ -7,7 +7,9 @@ from ListaSimple import ListaSimple
 from Dijkstra import Dijkstra
 from ListaDoble import ListaDoble
 from Nodo import Nodo
+from Graphviz import Graphviz
 
+g = Graphviz()
 p = Parser()
 data = ''
 terrenos =ListaSimple()
@@ -95,11 +97,11 @@ def llenarTerrenos(lista):
 if __name__ == "__main__":
   
     print("Bienvenido")
-    opcion = int(input("Elije una opcion: \n 1.Cargar Archivo \n 2.Procesar archivos \n 3.Escribir archivo de salida \n 4.Salir \n"))
+    opcion = int(input("Elije una opcion: \n 1.Cargar Archivo \n 2.Procesar archivos \n 3.Escribir archivo de salida \n 4.Mostrar datos del estudiante \n 5.Generar Grafica \n 6.Salir \n"))
 
     
 
-    while opcion != 4:
+    while opcion != 6:
 
         if opcion == 1:
             print("Opcion 1")
@@ -120,10 +122,17 @@ if __name__ == "__main__":
             node = Nodo(x=1,y=1,distanciatotal=0)
             l.sucesores(terrenos[0].lista_posiciones,node)
 
-        #if opcion == 2:
+        elif opcion == 2: #Procesar Archivo
+            pass
+        elif opcion==3: #Escribir archivo de salida
+            pass
+        elif opcion==4: #Datos del estudiante
+            pass
+        elif opcion==5: #Generar grafica
+            g.generarGraphviz()
             
             
         else:
             print("Ingrese una opcion valida")
-        opcion = int(input("Elije una opcion: \n 1.Cargar Archivo \n 2.Reporte en consola \n 3.Exportar reporte \n 4.Salir \n"))
+        opcion = int(input("Elije una opcion: \n 1.Cargar Archivo \n 2.Procesar archivos \n 3.Escribir archivo de salida \n 4.Mostrar datos del estudiante \n 5.Generar Grafica \n 6.Salir \n"))
 
