@@ -61,20 +61,21 @@ def llenarTerrenos(lista):
             elif(x=='posicioninicio'):
                 if(terreno.inicio_x==0):
                     i+=2
-                    terreno.inicio_x = lista[i]
+                    terreno.inicio_x = int(lista[i])
                     i+=3
-                    terreno.inicio_y = lista[i]
+                    terreno.inicio_y = int(lista[i])
             elif(x=='posicionfin'):
                 if(terreno.final_x==0):
                     i+=2
-                    terreno.final_x = lista[i]
-                    num_rows = abs(int(terreno.inicio_x)-int(terreno.final_x))+1
+                    terreno.final_x = int(lista[i])
+                    #num_rows = abs(int(terreno.inicio_x)-int(terreno.final_x))+1
+                    num_rows = 10
                     i+=3
-                    terreno.final_y = lista[i]
-                    num_cols = abs(int(terreno.inicio_y)-int(terreno.final_y))+1
-                    
+                    terreno.final_y = int(lista[i])
+                    #num_cols = abs(int(terreno.inicio_y)-int(terreno.final_y))+1
+                    num_cols = 10
                     #lo bueno aqui es que en vez del 0 podes meter una clase y te mete una matrix de objetos
-                    terreno.lista_posiciones = np.full((num_rows, num_cols), 0) 
+                    terreno.lista_posiciones = np.full((num_cols, num_rows), 0) 
 
             elif(x=='posicion'):
                 i+=2
@@ -111,7 +112,7 @@ if __name__ == "__main__":
             #Setea matriz            
             dk.matriz= k.lista_posiciones
             print(dk.matriz)
-            dk.obtenerRuta(4,4)
+            dk.obtenerRuta(x_inicial=k.inicio_x-1,y_inicial=k.inicio_y-1,x_final=k.final_x-1,y_final= k.final_y-1)
 
             print(terrenos[0].lista_posiciones)
 
