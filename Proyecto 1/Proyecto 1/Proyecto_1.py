@@ -114,6 +114,8 @@ if __name__ == "__main__":
             #Setea matriz            
             dk.matriz= k.lista_posiciones
             print(dk.matriz)
+
+            g.generarGraphviz(dk.matriz)
             dk.obtenerRuta(x_inicial=k.inicio_x-1,y_inicial=k.inicio_y-1,x_final=k.final_x-1,y_final= k.final_y-1)
 
             print(terrenos[0].lista_posiciones)

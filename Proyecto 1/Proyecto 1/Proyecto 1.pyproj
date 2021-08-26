@@ -24,6 +24,7 @@
     <Compile Include="Dijkstra.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Graphviz.py" />
     <Compile Include="ListaDoble.py">
       <SubType>Code</SubType>
     </Compile>
