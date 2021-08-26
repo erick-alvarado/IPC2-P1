@@ -13,25 +13,25 @@ class Graphviz:
 
         for i in range(len(matrix)):
             for j in range(len(matrix[i])):
-                    label+=" A"+str(j)+str(i) + '[ label = "'+str(matrix[i][j])+'"]'
+                    label+=" A"+str(j)+"_"+str(i) + '[ label = "'+str(matrix[i][j])+'"]'
                     label+=' \n '
 
 
         for i in range(len(matrix)):
             for j in range(len(matrix[i])):
                 if(j==len(matrix)-1):
-                    fila+=" A"+str(i)+str(j)
+                    fila+=" A"+str(i)+"_"+str(j)
                 else:
-                    fila+=" A"+str(i)+str(j) + " -- "
+                    fila+=" A"+str(i)+"_"+str(j) + " -- "
             fila+=' \n '
 
         for i in range(len(matrix)):
             rank+= " rank=same {"
             for j in range(len(matrix[i])):
                 if(j==len(matrix)-1):
-                    rank+="A"+str(j)+str(i)
+                    rank+="A"+str(j)+"_"+str(i)
                 else:
-                    rank+="A"+str(j)+str(i) + " -- "
+                    rank+="A"+str(j)+"_"+str(i) + " -- "
             rank+="}"
 
         txt = label+fila+rank

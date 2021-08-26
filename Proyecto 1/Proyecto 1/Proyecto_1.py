@@ -39,7 +39,7 @@ def prueba ():
     txt = abrir()
     if txt is not None:
         data = txt
-        p.obtenerData(data)
+        p.obtenerData(data.lower())
     else:
         print("Error lectura")
 
@@ -48,6 +48,8 @@ def llenarTerrenos(lista):
         terreno = ''
         i = 0
         end = len(lista)
+        num_rows=0
+        num_cols=0
         while i< end:
             x=lista[i];
             if(x=='terreno'):
@@ -71,13 +73,12 @@ def llenarTerrenos(lista):
                     i+=2
                     terreno.final_x = int(lista[i])
                     #num_rows = abs(int(terreno.inicio_x)-int(terreno.final_x))+1
-                    num_rows = 10
                     i+=3
                     terreno.final_y = int(lista[i])
                     #num_cols = abs(int(terreno.inicio_y)-int(terreno.final_y))+1
-                    num_cols = 10
                     #lo bueno aqui es que en vez del 0 podes meter una clase y te mete una matrix de objetos
                     terreno.lista_posiciones = np.full((num_cols, num_rows), 0) 
+                    num_rows = 0
 
             elif(x=='posicion'):
                 i+=2
@@ -89,7 +90,12 @@ def llenarTerrenos(lista):
 
                 terreno.lista_posiciones[x,y]= int(lista[i])
                 i+=1
-
+            elif(x=='dimension'):
+                if num_rows==0:
+                    i+=2
+                    num_rows = int(lista[i])
+                    i+=3
+                    num_cols= int(lista[i])
             else:
                 pass
             i+=1

@@ -7,7 +7,7 @@ class Dijkstra:
         self.matriz = None
     
     def obtenerRuta(self,x_inicial,y_inicial,x_final,y_final):
-        nodo = Nodo(x=x_inicial,y=y_inicial,distanciatotal=self.matriz[x_inicial,y_inicial],costo= self.matriz[x_inicial,y_inicial])
+        nodo = Nodo(x=x_inicial,y=y_inicial,distanciatotal=self.matriz[y_inicial,x_inicial],costo= self.matriz[y_inicial,x_inicial])
         lista_doble = ListaDoble();
         lista_doble.insertar(nodo);
         cabeza = lista_doble.primero
