@@ -8,6 +8,8 @@ from Dijkstra import Dijkstra
 from ListaDoble import ListaDoble
 from Nodo import Nodo
 from Graphviz import Graphviz
+from Reporte import Reporte
+
 
 g = Graphviz()
 p = Parser()
@@ -78,6 +80,8 @@ def llenarTerrenos(lista):
                     #num_cols = abs(int(terreno.inicio_y)-int(terreno.final_y))+1
                     #lo bueno aqui es que en vez del 0 podes meter una clase y te mete una matrix de objetos
                     terreno.lista_posiciones = np.full((num_cols, num_rows), 0) 
+                    terreno.n = num_cols
+                    terreno.m = num_rows
                     num_rows = 0
 
             elif(x=='posicion'):
@@ -116,13 +120,17 @@ if __name__ == "__main__":
 
             #Jala terreno aca hay que pedirle al usuario al terreno
             k  = terrenos.buscar("terreno1")
+            
 
             #Setea matriz            
             dk.matriz= k.lista_posiciones
             print(dk.matriz)
 
             g.generarGraphviz(dk.matriz)
-            dk.obtenerRuta(x_inicial=k.inicio_x-1,y_inicial=k.inicio_y-1,x_final=k.final_x-1,y_final= k.final_y-1)
+            ruta = dk.obtenerRuta(x_inicial=k.inicio_x-1,y_inicial=k.inicio_y-1,x_final=k.final_x-1,y_final= k.final_y-1)
+            
+            reporte = Reporte(k.n,k.m)
+            reporte.getMatrix(ruta)
 
             print(terrenos[0].lista_posiciones)
 
@@ -133,6 +141,7 @@ if __name__ == "__main__":
         elif opcion == 2: #Procesar Archivo
             pass
         elif opcion==3: #Escribir archivo de salida
+            
             pass
         elif opcion==4: #Datos del estudiante
             pass

@@ -7,6 +7,8 @@ class Terreno:
         self.final_x = 0
         self.final_y = 0
         self.lista_posiciones=[]
+        self.n=0
+        self.m=0
 
     
 
