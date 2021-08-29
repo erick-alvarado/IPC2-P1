@@ -16,7 +16,7 @@ p = Parser()
 data = ''
 terrenos =ListaSimple()
 dk = Dijkstra()
-
+reporte = Reporte(0,0)
 def abrir():
     print("En el metodo abrir")
     Tk().withdraw()
@@ -79,7 +79,7 @@ def llenarTerrenos(lista):
                     terreno.final_y = int(lista[i])
                     #num_cols = abs(int(terreno.inicio_y)-int(terreno.final_y))+1
                     #lo bueno aqui es que en vez del 0 podes meter una clase y te mete una matrix de objetos
-                    terreno.lista_posiciones = np.full((num_cols, num_rows), 0) 
+                    terreno.lista_posiciones = np.full(( num_rows,num_cols), 0) 
                     terreno.n = num_cols
                     terreno.m = num_rows
                     num_rows = 0
@@ -92,14 +92,14 @@ def llenarTerrenos(lista):
                 y = int(lista[i])-1
                 i +=1
 
-                terreno.lista_posiciones[x,y]= int(lista[i])
+                terreno.lista_posiciones[y,x]= int(lista[i])
                 i+=1
             elif(x=='dimension'):
                 if num_rows==0:
                     i+=2
-                    num_rows = int(lista[i])
+                    num_cols = int(lista[i])
                     i+=3
-                    num_cols= int(lista[i])
+                    num_rows= int(lista[i])
             else:
                 pass
             i+=1
@@ -118,35 +118,20 @@ if __name__ == "__main__":
             prueba()
             llenarTerrenos(p.tokens)
 
-            #Jala terreno aca hay que pedirle al usuario al terreno
-            k  = terrenos.buscar("terreno1")
-            
-
-            #Setea matriz            
-            dk.matriz= k.lista_posiciones
-            print(dk.matriz)
-
-            g.generarGraphviz(dk.matriz)
-            ruta = dk.obtenerRuta(x_inicial=k.inicio_x-1,y_inicial=k.inicio_y-1,x_final=k.final_x-1,y_final= k.final_y-1)
-            
-            reporte = Reporte(k.n,k.m)
-            reporte.getMatrix(ruta)
-
-            print(terrenos[0].lista_posiciones)
-
-            l = ListaDoble()
-            node = Nodo(x=1,y=1,distanciatotal=0)
-            l.sucesores(terrenos[0].lista_posiciones,node)
-
         elif opcion == 2: #Procesar Archivo
+            name = str(input("Ingresa el nombre del terreno a procesar \n"))
+            k  = terrenos.buscar(name.lower())        
+            dk.matriz= k.lista_posiciones
             pass
         elif opcion==3: #Escribir archivo de salida
-            
+            ruta = dk.obtenerRuta(x_inicial=k.inicio_x-1,y_inicial=k.inicio_y-1,x_final=k.final_x-1,y_final= k.final_y-1)
+            reporte = Reporte(k.n,k.m)
+            reporte.getMatrix(ruta)
             pass
         elif opcion==4: #Datos del estudiante
             pass
         elif opcion==5: #Generar grafica
-            g.generarGraphviz()
+            g.generarGraphviz(dk.matriz)
             
             
         else:

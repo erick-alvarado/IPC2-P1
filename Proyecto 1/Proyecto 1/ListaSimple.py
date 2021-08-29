@@ -18,7 +18,7 @@ class ListaSimple:
 
     def buscar(self,nombre):
         actual = self.primero
-        while actual.data.nombre!=nombre:
+        while actual and actual.data.nombre!=nombre :
           actual = actual.siguiente
 
         if actual is None:
