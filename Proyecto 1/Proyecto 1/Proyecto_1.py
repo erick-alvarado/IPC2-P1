@@ -122,6 +122,7 @@ if __name__ == "__main__":
             name = str(input("Ingresa el nombre del terreno a procesar \n"))
             k  = terrenos.buscar(name.lower())        
             dk.matriz= k.lista_posiciones
+            print(dk.matriz)
             pass
         elif opcion==3: #Escribir archivo de salida
             ruta = dk.obtenerRuta(x_inicial=k.inicio_x-1,y_inicial=k.inicio_y-1,x_final=k.final_x-1,y_final= k.final_y-1)

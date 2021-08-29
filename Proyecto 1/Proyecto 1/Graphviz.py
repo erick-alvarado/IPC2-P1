@@ -18,21 +18,23 @@ class Graphviz:
 
 
         for i in range(len(matrix)):
+            rank+= " rank=same {"
             for j in range(len(matrix[i])):
                 if(j== len(matrix[0])-1):
-                    fila+=" A"+str(j)+"_"+str(i)
-                else:
-                    fila+=" A"+str(j)+"_"+str(i) + " -- "
-            fila+=' \n '
-
-        for j in range(len(matrix[i])):
-            rank+= " rank=same {"
-            for i in range(len(matrix)):
-                    if(i==len(matrix)-1):
                         rank+="A"+str(j)+"_"+str(i)
-                    else:
+                else:
                         rank+="A"+str(j)+"_"+str(i) + " -- "
             rank+="} \n"
+
+
+        for j in range(len(matrix[i])):
+            
+            for i in range(len(matrix)):
+                    if(i==len(matrix)-1):
+                        fila+=" A"+str(j)+"_"+str(i)
+                    else:
+                        fila+=" A"+str(j)+"_"+str(i) + " -- "
+            fila+=' \n '
 
         
 
